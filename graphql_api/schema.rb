@@ -7,15 +7,6 @@ module GraphqlApi
     use GraphQL::Execution::Interpreter
     use GraphQL::Analysis::AST
 
-    def self.resolve_type(_type, obj, _ctx)
-      binding.pry
-      name = obj.class.name
-      type_class = types[name] || types[TYPES_MAPPING[name]]
-      raise("Cannot find valid Type object for: #{obj}") unless type_class
-
-      type_class
-    end
-
     def self.unauthorized_object(error)
       raise GraphqlApi::Errors::NotAuthorizedError, "Not authorized (#{error.type.graphql_name})"
     end
