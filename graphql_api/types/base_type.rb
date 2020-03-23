@@ -22,7 +22,7 @@ module GraphqlApi
         Class.new(Offset) do
           graphql_name class_name
 
-          field :nodes, [type_class], null: false
+          field :nodes, [type_class, null: true], null: false
           field :total_count, Integer, null: false
         end
       end

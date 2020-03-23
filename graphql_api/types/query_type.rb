@@ -17,8 +17,7 @@ module GraphqlApi
       end
 
       def self.authorized?(obj, context)
-        # obj.name == 'banana1' ? true : false
-        false
+        true
       end
     end
 
@@ -30,8 +29,7 @@ module GraphqlApi
       end
 
       def self.authorized?(obj, context)
-        # obj.name == 'banana1' ? true : false
-        true
+        obj.name == 'banana1' ? true : false
       end
     end
 
