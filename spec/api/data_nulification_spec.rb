@@ -30,6 +30,27 @@ RSpec.describe 'top level errors' do
 
 
   it 'shows' do
-    puts JSON.pretty_generate(result)
+    expect(result).to eq(
+      {
+        "data"=>{
+          "bananas"=>{
+            "nodes"=>[
+              {"name"=>"banana"},
+              nil
+            ],
+            "totalCount"=>2
+          },
+          "orange"=>{"name"=>"orange"}
+        },
+        "errors"=>[
+          {
+            "message"=>"Not authorized (Banana)",
+            "locations"=>[{"line"=>3, "column"=>5}],
+            "path"=>["bananas", "nodes", 1],
+            "extensions"=>{"code"=>"UNAUTHORIZED"}
+          }
+        ]
+      }
+    )
   end
 end
